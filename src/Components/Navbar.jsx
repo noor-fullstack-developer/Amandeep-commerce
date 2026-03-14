@@ -1,0 +1,90 @@
+import React from "react";
+import { CiMail } from "react-icons/ci";
+import { IoCallOutline } from "react-icons/io5";
+import { FaWhatsapp, FaYoutube, FaInstagram } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa"
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  return (
+    <header className="w-full shadow-md">
+      
+      {/* ================= Upper Navbar ================= */}
+      <div className="bg-black text-white text-sm">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-2">
+          
+          {/* Contact Section */}
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex items-center gap-2 hover:text-gray-300 transition">
+              <CiMail size={18} />
+              <span>contact@company.com</span>
+            </div>
+
+            <div className="flex items-center gap-2 hover:text-gray-300 transition">
+              <IoCallOutline size={18} />
+              <span>+91 0000000000</span>
+            </div>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 text-lg">
+            <a href="#" className="hover:text-green-400 transition">
+              <FaWhatsapp />
+            </a>
+            <a href="#" className="hover:text-red-500 transition">
+              <FaYoutube />
+            </a>
+            <a href="#" className="hover:text-pink-500 transition">
+              <FaInstagram />
+            </a>
+            <a href="#" className="hover:text-blue-400 transition">
+              <FaTelegramPlane />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= Lower Navbar ================= */}
+      <nav className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          
+          {/* Logo */}
+          <div>
+            <img
+              src="./Logo.png"
+              alt="Logo"
+              className="h-10 object-contain"
+            />
+          </div>
+
+          {/* Menu */}
+          <ul className="hidden md:flex items-center gap-8 font-medium">
+            <Link to="/" className="cursor-pointer hover:text-blue-600 transition">
+              Home
+            </Link>
+            <Link to="/free-resources" className="cursor-pointer hover:text-blue-600 transition">
+              Free Resources
+            </Link>
+            <Link to="/courses" className="cursor-pointer hover:text-blue-600 transition">
+              Courses
+            </Link>
+            <Link to="/contact" className="cursor-pointer hover:text-blue-600 transition">
+              Contact Us
+            </Link>
+            <Link to="/about" className="cursor-pointer hover:text-blue-600 transition">
+              About
+            </Link>
+          </ul>
+
+          {/* Mobile Menu Button (Optional future upgrade) */}
+          <div className="md:hidden">
+            <button className="text-2xl">☰</button>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;
