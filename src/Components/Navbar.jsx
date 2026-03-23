@@ -45,7 +45,7 @@ const Navbar = () => {
       </div>
 
       {/* ================= Lower Navbar ================= */}
-      <nav className="bg-white">
+      <nav className="border-b-2">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           
           {/* Logo */}

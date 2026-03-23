@@ -23,7 +23,7 @@ const Banner = () => {
           <img
             src={Hero}
             alt="Slide 1"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fit-cover"
           />
         </SwiperSlide>
 
@@ -31,7 +31,7 @@ const Banner = () => {
           <img
             src={Hero1}
             alt="Slide 2"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fit-cover"
           />
         </SwiperSlide>
 
@@ -39,15 +39,14 @@ const Banner = () => {
           <img
             src={Hero2}
             alt="Slide 3"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fit-cover"
           />
         </SwiperSlide>
       </Swiper>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-black/30 via-black/40 to-black/50 z-10"></div>
+      {/* <div className="absolute inset-0 bg-linear-to-r from-black/30 via-black/40 to-black/50 z-10"></div>
 
-      {/* Content */}
       <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
         <div className="max-w-3xl text-white">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
@@ -65,7 +64,7 @@ const Banner = () => {
             Explore Courses
           </Link>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -39,7 +39,7 @@ const Courses = () => {
 
                 <button
                   onClick={() => navigate(`/course/${course.id}`)}
-                  className="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                  className="mt-6 w-full py-2 bg-linear-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:bg-blue-700 transition"
                 >
                   Learn More
                 </button>

@@ -5,11 +5,11 @@ import Footer from "./Footer";
 
 export default function MainLayout() {
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
+    <div className="bg-linear-to-t from-blue-100 to-purple-100 min-h-screen flex flex-col">
       <Navbar />
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 bg-gray-100">
+      <main className="flex-1 bg-linear-to-t from-blue-100 to-purple-100">
         <Outlet />
       </main>
 

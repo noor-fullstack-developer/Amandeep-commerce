@@ -57,7 +57,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className=" min-h-screen">
       {/* ================= HERO ================= */}
       <section className="relative py-10 px-4 text-center">
         <h1 className="text-3xl sm:text-3xl lg:text-4xl font-extrabold mb-4">

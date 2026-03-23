@@ -4,7 +4,7 @@ import { PiVideoLight, PiNotebookLight } from "react-icons/pi";
 
 const Ourimpact = () => {
   return (
-    <section className="py-12 md:py-20 bg-gray-200 ">
+    <section className="py-12 md:py-20 bg-linear-to-t from-blue-100 to-purple-100 ">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <h1 className="text-2xl md:text-4xl font-bold text-center mb-6 md:mb-14">
           Our Impact in Numbers

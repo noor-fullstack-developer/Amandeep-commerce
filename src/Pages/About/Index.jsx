@@ -3,7 +3,7 @@ import Photo from "./Assets/Photo.webp";
 
 const Index = () => {
   return (
-    <div className="bg-gray-50 min-h-screen font-sans">
+    <div className="min-h-screen font-sans">
 
       {/* ================= HERO ================= */}
       <section className="relative py-10 px-4">
@@ -79,7 +79,7 @@ const Index = () => {
       </section>
 
       {/* ================= MENTOR SECTION ================= */}
-      <section className="bg-white py-20">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
           {/* Mentor Image */}
