@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "./assets/Hero.webp";
+import Hero from "./assets/Amandeep.webp";
 import BeliefSection from "./Component/BeliefSection.jsx";
 import Testimonial from "./Component/Testimonial.jsx";
 import Courses from "./Component/Courses.jsx";

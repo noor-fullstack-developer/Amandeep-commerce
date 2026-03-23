@@ -22,7 +22,7 @@ const BeliefSection = () => {
                   "Concept Clarity First",
                   "Results Driven Teaching",
                   "Smart & Strategic Learning",
-                  "Built for CA Aspirants",
+                  "Built for Clear Douts",
                 ],
                 autoStart: true,
                 loop: true,

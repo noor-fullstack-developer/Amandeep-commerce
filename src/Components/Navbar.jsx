@@ -17,29 +17,29 @@ const Navbar = () => {
           <div className="flex flex-col md:flex-row items-center gap-4">
             <div className="flex items-center gap-2 hover:text-gray-300 transition">
               <CiMail size={18} />
-              <span>contact@company.com</span>
+              <span>amndeepcommerceclasses@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-2 hover:text-gray-300 transition">
               <IoCallOutline size={18} />
-              <span>+91 0000000000</span>
+              <span>+91 88009 05010</span>
             </div>
           </div>
 
           {/* Social Icons */}
           <div className="flex items-center gap-4 text-lg">
-            <a href="#" className="hover:text-green-400 transition">
+            <Link to="https://api.whatsapp.com/send/?phone=8800905010&text=Hey" className="hover:text-green-400 transition">
               <FaWhatsapp />
-            </a>
-            <a href="#" className="hover:text-red-500 transition">
+            </Link>
+            <Link to="https://www.youtube.com/@AmandeepCommerceClasses" className="hover:text-red-500 transition">
               <FaYoutube />
-            </a>
-            <a href="#" className="hover:text-pink-500 transition">
+            </Link>
+            <Link to="https://www.instagram.com/amandeepcommerceclasses" className="hover:text-pink-500 transition">
               <FaInstagram />
-            </a>
-            <a href="#" className="hover:text-blue-400 transition">
+            </Link>
+            <Link to="https://t.me/amandeepcommerceclasses" className="hover:text-blue-400 transition">
               <FaTelegramPlane />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -12,12 +12,10 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-linear-to-b from-black via-gray-950 to-black text-white pt-20 pb-8 relative">
-
       {/* Top Accent Line */}
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-yellow-400 via-orange-500 to-pink-500"></div>
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-16">
-
         {/* ================= Left Section ================= */}
         <div>
           <h2 className="text-3xl font-bold mb-6 tracking-wide">
@@ -35,17 +33,6 @@ const Footer = () => {
           </ul>
 
           {/* App Buttons */}
-          <div className="flex gap-4 mt-8">
-            <button className="flex items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-lg">
-              <FaGooglePlay className="text-lg" />
-              <span>Google Play</span>
-            </button>
-
-            <button className="flex items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-lg">
-              <FaApple className="text-lg" />
-              <span>App Store</span>
-            </button>
-          </div>
         </div>
 
         {/* ================= Middle Section ================= */}
@@ -61,26 +48,32 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/terms" className="hover:text-yellow-400 transition">
-                Terms & Conditions
-              </Link>
-            </li>
-            <li>
-              <Link to="/refund" className="hover:text-yellow-400 transition">
-                Refund & Cancellation
-              </Link>
-            </li>
-            <li>
               <Link to="/contact" className="hover:text-yellow-400 transition">
                 Contact Us
               </Link>
             </li>
             <li>
-              <Link to="/privacy" className="hover:text-yellow-400 transition">
+              <Link to="/terms-and-conditions" className="hover:text-yellow-400 transition">
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy" className="hover:text-yellow-400 transition">
                 Privacy Policy
               </Link>
             </li>
           </ul>
+          <div className="flex gap-4 mt-8">
+            <button className="flex items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-lg">
+              <FaGooglePlay className="text-lg" />
+              <span>Google Play</span>
+            </button>
+
+            <button className="flex items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-lg">
+              <FaApple className="text-lg" />
+              <span>App Store</span>
+            </button>
+          </div>
         </div>
 
         {/* ================= Right Section ================= */}
@@ -90,27 +83,45 @@ const Footer = () => {
           </h3>
 
           <div className="text-sm text-gray-400 space-y-3">
-            <p className="text-white font-medium">
-              Amandeep Commerce Classes
-            </p>
+            <p className="text-white font-medium">Amandeep Commerce Classes</p>
             <p>D-493, Dwarka Sector-7, 2nd Floor, New Delhi - 110077</p>
             <p>
-              📞 <span className="text-white font-medium">9244091123</span>
+              ✉️{" "}
+              <span className="text-white font-medium">
+                amndeepcommerceclasses@gmail.com
+              </span>
+            </p>
+            <p>
+              📞 <span className="text-white font-medium">88009 05010</span>
             </p>
           </div>
 
           {/* Social Icons */}
           <div className="flex gap-4 mt-8">
-            {[FaWhatsapp, FaYoutube, FaInstagram, FaTelegramPlane].map(
-              (Icon, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
-                >
-                  <Icon className="text-lg" />
-                </div>
-              )
-            )}
+            <Link
+              to="https://api.whatsapp.com/send/?phone=8800905010&text=Hey"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+            >
+              <FaWhatsapp className="text-lg" />
+            </Link>
+            <Link
+              to="https://www.youtube.com/@AmandeepCommerceClasses"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+            >
+              <FaYoutube className="text-lg" />
+            </Link>
+            <Link
+              to="https://www.instagram.com/amandeepcommerceclasses"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+            >
+              <FaInstagram className="text-lg" />
+            </Link>
+            <Link
+              to="https://t.me/amandeepcommerceclasses"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+            >
+              <FaTelegramPlane className="text-lg" />
+            </Link>
           </div>
         </div>
       </div>

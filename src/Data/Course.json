@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "title": "Accounts",
+    "tutor": "CA Deepak Jain",
+    "Category": "Top",
+    "price": 15000,
+    "oldPrice": 19999,
+    "badge": "Best Seller",
+    "description": "Complete conceptual coverage with Smart Notes & 100% exam-oriented preparation.",
+    "duration": "120 Hours",
+    "language": "Hindi + English",
+    "lectures": 85,
+    "validity": "12 Months",
+    "level": "Beginner to Advanced",
+    "isPopular": true,
+    "features": [
+      "Conceptual clarity with real-life examples",
+      "Smart Notes PDF",
+      "Doubt solving sessions",
+      "Test series included"
+    ],
+    "syllabus": [
+      "Accounting Fundamentals",
+      "Journal Entries & Ledger",
+      "Trial Balance",
+      "Final Accounts",
+      "Depreciation",
+      "Bills of Exchange"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/AccountTN.webp",
+    "img": "/Account.webp"
+  },
+  {
+    "id": 2,
+    "title": "Business Studies",
+    "tutor": "CA Deepak Jain",
+    "Category": "Top",
+    "price": 10000,
+    "oldPrice": 15999,
+    "badge": "Popular",
+    "description": "Quick revision batch designed for last 2-3 months preparation strategy.",
+    "duration": "60 Hours",
+    "language": "Hindi",
+    "lectures": 40,
+    "validity": "6 Months",
+    "level": "Intermediate",
+    "isPopular": true,
+    "features": [
+      "Quick revision notes",
+      "Case study approach",
+      "Exam-focused preparation"
+    ],
+    "syllabus": [
+      "Nature & Significance of Management",
+      "Planning",
+      "Organising",
+      "Staffing",
+      "Directing",
+      "Controlling"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": false,
+      "downloadable": true
+    },
+    "thumbnail": "/BussinessTN.webp",
+    "img": "/Bussiness.webp"
+  },
+  {
+    "id": 3,
+    "title": "Economics",
+    "tutor": "Rahul Kumar",
+    "Category": "Top",
+    "price": 15000,
+    "oldPrice": 18999,
+    "badge": "New",
+    "description": "Strong foundation building with practical illustrations & case studies.",
+    "duration": "90 Hours",
+    "language": "English",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": true,
+    "features": [
+      "Concept building",
+      "Graph-based explanations",
+      "Real-world case studies"
+    ],
+    "syllabus": [
+      "Micro Economics",
+      "Demand & Supply",
+      "Elasticity",
+      "Market Structures",
+      "National Income"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": false
+    },
+    "thumbnail": "/EconomicsTN.webp",
+    "img": "/Economics.webp"
+  },
+  {
+    "id": 4,
+    "title": "Maths",
+    "tutor": "Neha Kumari (CA Finalist)",
+    "Category": "Top",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "description": "Power-packed rapid revision session before exams with key tricky concepts.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Shortcut techniques",
+      "Important questions practice",
+      "Speed improvement sessions"
+    ],
+    "syllabus": [
+      "Algebra",
+      "Calculus",
+      "Probability",
+      "Statistics",
+      "Time Value of Money"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/MathsTN.webp",
+    "img": "/Maths.webp"
+  }
+]

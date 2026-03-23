@@ -1,42 +1,43 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const coursesData = [
   {
     id: 1,
-    title: "CA Final Direct Tax - Full Course",
-    category: "Final",
-    price: "₹7,999",
-    oldPrice: "₹9,999",
+    title: "Accounts",
+    tutor: "CA Deepak Jain",
+    price: "₹15,000",
+    oldPrice: "₹19,999",
     badge: "Best Seller",
     description:
       "Complete conceptual coverage with Smart Notes & 100% exam-oriented preparation.",
   },
   {
     id: 2,
-    title: "CA Final DT - FastTrack Batch",
-    category: "Final",
-    price: "₹4,999",
-    oldPrice: "₹6,999",
+    title: "Business studies",
+    tutor: "CA Deepak Jain",
+    price: "₹10,000",
+    oldPrice: "₹15,999",
     badge: "Popular",
     description:
       "Quick revision batch designed for last 2-3 months preparation strategy.",
   },
   {
     id: 3,
-    title: "CA Inter Direct Tax",
-    category: "Inter",
-    price: "₹5,499",
-    oldPrice: "₹6,999",
+    title: "Economics",
+    tutor: "Rahul kumar",
+    price: "₹15,000",
+    oldPrice: "₹18,999",
     badge: "New",
     description:
       "Strong foundation building with practical illustrations & case studies.",
   },
   {
     id: 4,
-    title: "Last Day Revision Marathon",
-    category: "Revision",
-    price: "₹999",
-    oldPrice: "₹1,499",
+    title: "Maths",
+    tutor: "Neha kumari CA finalist",
+    price: "₹15,000",
+    oldPrice: "₹17,499",
     badge: "Hot",
     description:
       "Power-packed rapid revision session before exams with key tricky concepts.",
@@ -53,12 +54,13 @@ const Index = () => {
       ? coursesData
       : coursesData.filter((course) => course.category === activeCategory);
 
+  const navigate = useNavigate();
+
   return (
     <div className="bg-gray-50 min-h-screen">
-
       {/* ================= HERO ================= */}
-      <section className="relative bg-[url('https://storage.googleapis.com/stepfly-partners-v1-prod.appspot.com/yashKhandelwalClasses/adminUploads/yash-khandelwal-web-bg.webp')] bg-cover bg-center py-20 px-4 text-center">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
+      <section className="relative py-10 px-4 text-center">
+        <h1 className="text-3xl sm:text-3xl lg:text-4xl font-extrabold mb-4">
           Explore Our Courses
         </h1>
         <p className="max-w-xl sm:max-w-2xl mx-auto text-sm sm:text-base lg:text-lg opacity-90">
@@ -97,10 +99,13 @@ const Index = () => {
                   {course.badge}
                 </span>
 
-                <h3 className="text-lg sm:text-xl font-bold mb-3">
+                <h3 className="text-lg sm:text-xl font-bold mb-1">
                   {course.title}
                 </h3>
 
+                <p className="text-gray-600 text-xs sm:text-sm mb-2">
+                  {course.tutor}
+                </p>
                 <p className="text-gray-600 text-xs sm:text-sm mb-6">
                   {course.description}
                 </p>
@@ -120,9 +125,12 @@ const Index = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button className="w-full bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800 transition text-sm">
-                    Enroll Now
+                    book Now
                   </button>
-                  <button className="w-full border border-indigo-700 text-indigo-700 py-2 rounded-lg hover:bg-indigo-50 transition text-sm">
+                  <button
+                    onClick={() => navigate(`/course/${course.id}`)}
+                    className="w-full border border-indigo-700 text-indigo-700 py-2 rounded-lg hover:bg-indigo-50 transition text-sm"
+                  >
                     View Details
                   </button>
                 </div>
@@ -135,7 +143,7 @@ const Index = () => {
       {/* ================= CTA SECTION ================= */}
       <section className="bg-black text-white py-16 sm:py-20 text-center px-4">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-          Ready to Clear CA Final?
+          Ready to Clear studies?
         </h2>
         <p className="max-w-md sm:max-w-xl mx-auto text-gray-400 text-sm sm:text-base mb-6">
           Join thousands of successful students who trusted our Smart Notes &

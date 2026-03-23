@@ -19,13 +19,13 @@ const Videos = () => {
             className="w-full h-56 md:h-64 rounded-lg shadow-md"
             src="https://www.youtube.com/embed/68g3ikZv9yM"
             title="Law as a Profession | Myths vs Reality | Internships &amp; More | Advocate Raman Sharma | CA Deepak Jain"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
           <iframe
             className="w-full h-56 md:h-64 rounded-lg shadow-md"
             src="https://www.youtube.com/embed/cWKIo3GfiR4"
             title="How to choose your *Internship* Domain during CA? | CA Deepak Jain"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>

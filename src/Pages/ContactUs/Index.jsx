@@ -21,12 +21,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* ================= HERO ================= */}
-      <section className="relative bg-[url('https://storage.googleapis.com/stepfly-partners-v1-prod.appspot.com/yashKhandelwalClasses/adminUploads/yash-khandelwal-web-bg.webp')] bg-cover bg-center py-20 px-4 text-center">        
+      <section className="relative py-10 px-4 text-center">        
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
-
         <div className="relative max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-6">
             Contact Us
           </h1>
           <p className="text-lg md:text-xl opacity-90">

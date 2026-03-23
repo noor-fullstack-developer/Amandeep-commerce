@@ -29,7 +29,7 @@ const WhyUs = () => {
   ];
 
   return (
-    <section className="py-12 mt-10 md:py-20 bg-[url('https://storage.googleapis.com/stepfly-partners-v1-prod.appspot.com/yashKhandelwalClasses/adminUploads/yash-khandelwal-web-bg.webp')] bg-cover bg-center">
+    <section className="py-12 md:py-20  bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <h1 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-14">
           Why Amandeep Classes ?

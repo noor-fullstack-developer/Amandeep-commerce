@@ -1,18 +1,16 @@
 import React from "react";
-import Photo from "./Assets/Photo.png";
+import Photo from "./Assets/Photo.webp";
 
 const Index = () => {
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
 
       {/* ================= HERO ================= */}
-      <section className="relative bg-[url('https://storage.googleapis.com/stepfly-partners-v1-prod.appspot.com/yashKhandelwalClasses/adminUploads/yash-khandelwal-web-bg.webp')] bg-cover bg-center py-24 px-4">
+      <section className="relative py-10 px-4">
         
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
 
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+        <div className="relative z-10 text-center text-black max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight">
             About Amandeep Commerce Classes
           </h1>
           <p className="text-sm sm:text-lg opacity-90 italic">

@@ -1,45 +1,19 @@
 import React from "react";
-
-const freeCourses = [
-  {
-    id: 1,
-    title: "Income Tax Basics (Free)",
-    description:
-      "Understand fundamental concepts of Income Tax for CA Foundation & Inter.",
-    duration: "6 Hours",
-    level: "Beginner",
-  },
-  {
-    id: 2,
-    title: "GST Introduction Masterclass",
-    description:
-      "Complete overview of GST structure, registration & compliance.",
-    duration: "4 Hours",
-    level: "Beginner",
-  },
-  {
-    id: 3,
-    title: "CA Exam Strategy Blueprint",
-    description:
-      "Learn how to structure your preparation for maximum results.",
-    duration: "2 Hours",
-    level: "All Levels",
-  },
-];
+import { Link } from "react-router-dom";
+import freeCourses from "../../Data/freeResourses.json";
 
 const Index = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800">
             Start with Our Free Courses
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Begin your CA journey with structured free resources designed
-            for concept clarity and smart preparation.
+            Begin your CA journey with structured free resources designed for
+            concept clarity and smart preparation.
           </p>
         </div>
 
@@ -68,9 +42,12 @@ const Index = () => {
                 <span>📘 {course.level}</span>
               </div>
 
-              <button className="w-full py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition">
-                Enroll Free
-              </button>
+              <Link
+                to={course.link}
+                className="block text-center w-full py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
+              >
+                Get Started
+              </Link>
             </div>
           ))}
         </div>

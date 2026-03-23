@@ -8,6 +8,8 @@ import FreeResources from "./Pages/FreeResources/Index.jsx";
 import Privacy from "./Pages/Privacy/Index.jsx";
 import Terms from "./Pages/terms/Index.jsx";
 import { Route, Routes } from "react-router-dom";
+import CoursesDetail from "./Pages/coursesDetail/Index.jsx";
+
 const App = () => {
   return (
     <Routes>
@@ -16,6 +18,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/course/:id" element={<CoursesDetail />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-and-conditions" element={<Terms />} />
         <Route path="/free-resources" element={<FreeResources />} />

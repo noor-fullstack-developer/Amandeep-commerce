@@ -2,10 +2,10 @@ import "swiper/css";
 import React from "react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Hero from "../assets/Hero.webp";
+import Hero from "../assets/hero3.webp";
 import { Link } from "react-router-dom";
-import Hero1 from "../assets/Hero-1.webp";
-import Hero2 from "../assets/Hero-2.webp";
+import Hero1 from "../assets/hero.webp";
+import Hero2 from "../assets/hero2.webp";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -45,18 +45,17 @@ const Banner = () => {
       </Swiper>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/40 z-10"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-black/30 via-black/40 to-black/50 z-10"></div>
 
       {/* Content */}
       <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
-        <div className="max-w-4xl text-white">
+        <div className="max-w-3xl text-white">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-            Master CA with Confidence
+            Empowering Students for a Brighter Future
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-gray-200">
-            Structured learning. Smart notes. Practical examples. Everything you
-            need to clear CA Final successfully.
+            Interactive learning, expert teachers, and structured courses designed to help you succeed.
           </p>
 
           <Link
