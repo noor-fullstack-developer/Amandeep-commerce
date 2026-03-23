@@ -1,7 +1,7 @@
 import React from "react";
 import Fun from "../Assets/Fun.webp";
 import study from "../Assets/study.webp";
-import Intensive from "../Assets/Intractive.webp";
+import Intensive from "../Assets/intractive.webp";
 
 const WhyUs = () => {
   const whyUs = [
