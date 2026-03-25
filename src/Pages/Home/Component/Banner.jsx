@@ -2,7 +2,7 @@ import "swiper/css";
 import React from "react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Hero1 from "../Assets/hero.webp";
+import Hero1 from "../Assets/Hero.webp";
 import Hero2 from "../Assets/hero2.webp";
 import Hero from "../Assets/hero3.webp";
 import { Autoplay } from "swiper/modules";
