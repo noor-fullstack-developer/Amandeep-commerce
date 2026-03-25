@@ -1,13 +1,16 @@
 [
   {
     "id": 1,
-    "title": "Accounts",
+    "title": "Accounting",
+    "slug": "class-11th-accounting",
     "tutor": "CA Deepak Jain",
-    "Category": "Top",
+    "category": "11th",
     "price": 15000,
     "oldPrice": 19999,
     "badge": "Best Seller",
-    "description": "Complete conceptual coverage with Smart Notes & 100% exam-oriented preparation.",
+    "rating": 4.8,
+    "students": 1200,
+    "description": "Complete conceptual coverage with exam focus.",
     "duration": "120 Hours",
     "language": "Hindi + English",
     "lectures": 85,
@@ -15,18 +18,18 @@
     "level": "Beginner to Advanced",
     "isPopular": true,
     "features": [
-      "Conceptual clarity with real-life examples",
-      "Smart Notes PDF",
-      "Doubt solving sessions",
-      "Test series included"
+      "Concept clarity",
+      "Notes",
+      "Doubt solving",
+      "Test series"
     ],
     "syllabus": [
       "Accounting Fundamentals",
-      "Journal Entries & Ledger",
+      "Journal & Ledger",
       "Trial Balance",
       "Final Accounts",
       "Depreciation",
-      "Bills of Exchange"
+      "Bills"
     ],
     "includes": {
       "videos": true,
@@ -34,31 +37,34 @@
       "testSeries": true,
       "downloadable": true
     },
-    "thumbnail": "/AccountTN.webp",
-    "img": "/Account.webp"
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp"
   },
   {
     "id": 2,
     "title": "Business Studies",
+    "slug": "class-11th-business-studies",
     "tutor": "CA Deepak Jain",
-    "Category": "Top",
+    "category": "11th",
     "price": 10000,
     "oldPrice": 15999,
     "badge": "Popular",
-    "description": "Quick revision batch designed for last 2-3 months preparation strategy.",
+    "rating": 4.6,
+    "students": 950,
+    "description": "Business concepts with case studies.",
     "duration": "60 Hours",
     "language": "Hindi",
     "lectures": 40,
     "validity": "6 Months",
     "level": "Intermediate",
-    "isPopular": true,
+    "isPopular": false,
     "features": [
-      "Quick revision notes",
-      "Case study approach",
-      "Exam-focused preparation"
+      "Revision",
+      "Case studies",
+      "Exam focus"
     ],
     "syllabus": [
-      "Nature & Significance of Management",
+      "Nature of Management",
       "Planning",
       "Organising",
       "Staffing",
@@ -68,31 +74,34 @@
     "includes": {
       "videos": true,
       "notes": true,
-      "testSeries": false,
+      "testSeries": true,
       "downloadable": true
     },
-    "thumbnail": "/BussinessTN.webp",
-    "img": "/Bussiness.webp"
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp"
   },
   {
     "id": 3,
     "title": "Economics",
+    "slug": "class-11th-economics",
     "tutor": "Rahul Kumar",
-    "Category": "Top",
+    "category": "11th",
     "price": 15000,
     "oldPrice": 18999,
     "badge": "New",
-    "description": "Strong foundation building with practical illustrations & case studies.",
+    "rating": 4.7,
+    "students": 800,
+    "description": "Foundation in Economics.",
     "duration": "90 Hours",
     "language": "English",
     "lectures": 70,
     "validity": "12 Months",
     "level": "Beginner",
-    "isPopular": true,
+    "isPopular": false,
     "features": [
-      "Concept building",
-      "Graph-based explanations",
-      "Real-world case studies"
+      "Concepts",
+      "Graphs",
+      "Examples"
     ],
     "syllabus": [
       "Micro Economics",
@@ -105,20 +114,23 @@
       "videos": true,
       "notes": true,
       "testSeries": true,
-      "downloadable": false
+      "downloadable": true
     },
-    "thumbnail": "/EconomicsTN.webp",
-    "img": "/Economics.webp"
+    "thumbnail": "/economics-tn.webp",
+    "img": "/economics.webp"
   },
   {
     "id": 4,
-    "title": "Maths",
-    "tutor": "Neha Kumari (CA Finalist)",
-    "Category": "Top",
+    "title": "Mathematics",
+    "slug": "class-11th-mathematics",
+    "tutor": "Neha Kumari",
+    "category": "11th",
     "price": 15000,
     "oldPrice": 17499,
     "badge": "Hot",
-    "description": "Power-packed rapid revision session before exams with key tricky concepts.",
+    "rating": 4.5,
+    "students": 700,
+    "description": "Complete Maths with practice.",
     "duration": "80 Hours",
     "language": "Hindi + English",
     "lectures": 65,
@@ -126,16 +138,16 @@
     "level": "Advanced",
     "isPopular": false,
     "features": [
-      "Shortcut techniques",
-      "Important questions practice",
-      "Speed improvement sessions"
+      "Shortcuts",
+      "Practice",
+      "Speed"
     ],
     "syllabus": [
       "Algebra",
+      "Trigonometry",
       "Calculus",
       "Probability",
-      "Statistics",
-      "Time Value of Money"
+      "Statistics"
     ],
     "includes": {
       "videos": true,
@@ -143,7 +155,1135 @@
       "testSeries": true,
       "downloadable": true
     },
-    "thumbnail": "/MathsTN.webp",
-    "img": "/Maths.webp"
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp"
+  },
+  {
+    "id": 5,
+    "title": "Accounting",
+    "slug": "class-12th-accounting",
+    "tutor": "CA Deepak Jain",
+    "category": "12th",
+    "price": 15000,
+    "oldPrice": 19999,
+    "badge": "Best Seller",
+    "rating": 4.9,
+    "students": 1500,
+    "description": "Advanced accounting for boards.",
+    "duration": "120 Hours",
+    "language": "Hindi + English",
+    "lectures": 85,
+    "validity": "12 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Concepts",
+      "Notes",
+      "Tests"
+    ],
+    "syllabus": [
+      "Partnership",
+      "Company Accounts",
+      "Cash Flow",
+      "Analysis"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp"
+  },
+  {
+    "id": 6,
+    "title": "Business Studies",
+    "slug": "class-12th-business-studies",
+    "tutor": "CA Deepak Jain",
+    "category": "12th",
+    "price": 10000,
+    "oldPrice": 15999,
+    "badge": "Popular",
+    "rating": 4.6,
+    "students": 1000,
+    "description": "Board exam preparation.",
+    "duration": "60 Hours",
+    "language": "Hindi",
+    "lectures": 40,
+    "validity": "6 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Revision",
+      "Case studies"
+    ],
+    "syllabus": [
+      "Management",
+      "Planning",
+      "Staffing",
+      "Control"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp"
+  },
+  {
+    "id": 7,
+    "title": "Economics",
+    "slug": "class-12th-economics",
+    "tutor": "Rahul Kumar",
+    "category": "12th",
+    "price": 15000,
+    "oldPrice": 18999,
+    "badge": "New",
+    "rating": 4.8,
+    "students": 1100,
+    "description": "Macro economics mastery.",
+    "duration": "90 Hours",
+    "language": "English",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": true,
+    "features": [
+      "Graphs",
+      "Concepts"
+    ],
+    "syllabus": [
+      "Macro Economics",
+      "National Income",
+      "Banking",
+      "Balance of Payments"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/economics-tn.webp",
+    "img": "/economics.webp"
+  },
+  {
+    "id": 8,
+    "title": "Mathematics",
+    "slug": "class-12th-mathematics",
+    "tutor": "Neha Kumari",
+    "category": "12th",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 900,
+    "description": "Advanced maths for boards.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Practice",
+      "Speed"
+    ],
+    "syllabus": [
+      "Calculus",
+      "Vectors",
+      "Probability",
+      "Linear Programming"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp"
+  },
+  {
+    "id": 9,
+    "title": "Advanced Accounting",
+    "slug": "ca-inter-advanced-accounting",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Popular",
+    "rating": 4.8,
+    "students": 1300,
+    "description": "CA Inter accounting.",
+    "duration": "100 Hours",
+    "language": "Hindi + English",
+    "lectures": 75,
+    "validity": "12 Months",
+    "level": "Advanced",
+    "isPopular": true,
+    "features": [
+      "ICAI questions",
+      "Revision"
+    ],
+    "syllabus": [
+      "Accounting Standards",
+      "Partnership",
+      "Company Accounts",
+      "Amalgamation",
+      "Reconstruction"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 10,
+    "title": "Corporate and Other Laws",
+    "slug": "ca-inter-law",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 900,
+    "description": "Law for CA Inter.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Case laws",
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Company Law",
+      "Contract Law",
+      "Other Laws"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/law-tn.webp",
+    "img": "/law.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 11,
+    "title": "Taxation",
+    "slug": "ca-inter-taxation",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Trending",
+    "rating": 4.7,
+    "students": 1100,
+    "description": "Direct & Indirect Tax.",
+    "duration": "90 Hours",
+    "language": "Hindi + English",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "GST",
+      "Income Tax"
+    ],
+    "syllabus": [
+      "Income Tax",
+      "GST",
+      "Returns",
+      "Deductions"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/tax-tn.webp",
+    "img": "/tax.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 12,
+    "title": "Cost and Management Accounting",
+    "slug": "ca-inter-costing",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 850,
+    "description": "Costing concepts.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Numericals",
+      "Concepts"
+    ],
+    "syllabus": [
+      "Costing",
+      "Budgeting",
+      "Standard Costing"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 13,
+    "title": "Auditing and Ethics",
+    "slug": "ca-inter-audit",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 800,
+    "description": "Audit fundamentals.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Audit concepts"
+    ],
+    "syllabus": [
+      "Audit Basics",
+      "Ethics",
+      "Standards"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/audit-tn.webp",
+    "img": "/audit.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 14,
+    "title": "Financial Management and Strategic Management",
+    "slug": "ca-inter-fm-sm",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 870,
+    "description": "FM & SM.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Numericals"
+    ],
+    "syllabus": [
+      "Time Value",
+      "Capital Budgeting",
+      "Strategy"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Intermediate"
+  },
+  {
+    "id": 15,
+    "title": "Accounting",
+    "slug": "ca-foundation-accounting",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 920,
+    "description": "CA Foundation Accounting.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Accounting Basics",
+      "Journal",
+      "Final Accounts"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Foundation"
+  },
+  {
+    "id": 16,
+    "title": "Business Laws",
+    "slug": "ca-foundation-business-laws",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.4,
+    "students": 760,
+    "description": "CA Foundation Business Laws.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Case studies"
+    ],
+    "syllabus": [
+      "Contract Act",
+      "Sale of Goods",
+      "Legal Basics"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Foundation"
+  },
+  {
+    "id": 17,
+    "title": "Quantitative Aptitude",
+    "slug": "ca-foundation-quantitative-aptitude",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 840,
+    "description": "CA Foundation Quantitative Aptitude.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Shortcuts"
+    ],
+    "syllabus": [
+      "Maths Basics",
+      "Stats",
+      "LR"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Foundation"
+  },
+  {
+    "id": 18,
+    "title": "Business Economics",
+    "slug": "ca-foundation-business-economics",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 690,
+    "description": "CA Foundation Economics.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Demand Supply",
+      "Elasticity",
+      "Markets"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/economics-tn.webp",
+    "img": "/economics.webp",
+    "subCategory": "Foundation"
+  },
+  {
+    "id": 19,
+    "title": "Financial Reporting",
+    "slug": "ca-final-financial-reporting",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.7,
+    "students": 950,
+    "description": "CA Final Financial Reporting.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Advanced concepts"
+    ],
+    "syllabus": [
+      "Ind AS",
+      "Consolidation",
+      "Financial Statements"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 20,
+    "title": "Advanced Financial Management",
+    "slug": "ca-final-afm",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 870,
+    "description": "CA Final AFM.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Numericals"
+    ],
+    "syllabus": [
+      "TVM",
+      "Risk",
+      "Portfolio"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 21,
+    "title": "Advanced Auditing",
+    "slug": "ca-final-audit",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 780,
+    "description": "CA Final Audit.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Standards"
+    ],
+    "syllabus": [
+      "Audit Standards",
+      "Risk",
+      "Reporting"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 22,
+    "title": "Direct Tax",
+    "slug": "ca-final-direct-tax",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.6,
+    "students": 910,
+    "description": "CA Final Direct Tax.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Practical"
+    ],
+    "syllabus": [
+      "Income Tax",
+      "Deductions",
+      "Computation"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 23,
+    "title": "Indirect Tax",
+    "slug": "ca-final-indirect-tax",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 860,
+    "description": "CA Final Indirect Tax.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "GST"
+    ],
+    "syllabus": [
+      "GST",
+      "Customs",
+      "ITC"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 24,
+    "title": "Integrated Business Solutions",
+    "slug": "ca-final-ibs",
+    "tutor": "Neha Kumari",
+    "category": "CA",
+    "price": 15000,
+    "oldPrice": 17499,
+    "badge": "Hot",
+    "rating": 4.4,
+    "students": 720,
+    "description": "CA Final IBS.",
+    "duration": "80 Hours",
+    "language": "Hindi + English",
+    "lectures": 65,
+    "validity": "9 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Case studies"
+    ],
+    "syllabus": [
+      "Business Strategy",
+      "Case Analysis",
+      "Decision Making"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Final"
+  },
+  {
+    "id": 25,
+    "title": "Financial Accounting",
+    "slug": "bcom-financial-accounting",
+    "tutor": "CA Deepak Jain",
+    "category": "B.Com",
+    "price": 8000,
+    "oldPrice": 11999,
+    "badge": "Best Seller",
+    "rating": 4.7,
+    "students": 1100,
+    "description": "B.Com Financial Accounting.",
+    "duration": "100 Hours",
+    "language": "Hindi + English",
+    "lectures": 75,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Practical"
+    ],
+    "syllabus": [
+      "Journal",
+      "Ledger",
+      "Final Accounts"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Accounts"
+  },
+  {
+    "id": 26,
+    "title": "Business Economics",
+    "slug": "bcom-business-economics",
+    "tutor": "Rahul Kumar",
+    "category": "B.Com",
+    "price": 7000,
+    "oldPrice": 9999,
+    "badge": "Popular",
+    "rating": 4.5,
+    "students": 860,
+    "description": "B.Com Economics.",
+    "duration": "90 Hours",
+    "language": "English",
+    "lectures": 65,
+    "validity": "10 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Demand",
+      "Elasticity",
+      "Market"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": false,
+      "downloadable": true
+    },
+    "thumbnail": "/economics-tn.webp",
+    "img": "/economics.webp",
+    "subCategory": "Economics"
+  },
+  {
+    "id": 27,
+    "title": "Business Law",
+    "slug": "bcom-business-law",
+    "tutor": "Neha Kumari",
+    "category": "B.Com",
+    "price": 6500,
+    "oldPrice": 8999,
+    "badge": "Hot",
+    "rating": 4.4,
+    "students": 740,
+    "description": "B.Com Business Law.",
+    "duration": "70 Hours",
+    "language": "Hindi + English",
+    "lectures": 55,
+    "validity": "9 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Case study"
+    ],
+    "syllabus": [
+      "Contract Act",
+      "Sale of Goods",
+      "Partnership"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": false,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Business Law"
+  },
+  {
+    "id": 28,
+    "title": "Income Tax",
+    "slug": "bcom-income-tax",
+    "tutor": "CA Deepak Jain",
+    "category": "B.Com",
+    "price": 9000,
+    "oldPrice": 12999,
+    "badge": "Trending",
+    "rating": 4.6,
+    "students": 980,
+    "description": "B.Com Income Tax.",
+    "duration": "95 Hours",
+    "language": "Hindi",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Practical"
+    ],
+    "syllabus": [
+      "Income Heads",
+      "Deductions",
+      "Tax Computation"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Taxation"
+  },
+  {
+    "id": 29,
+    "title": "Cost Accounting",
+    "slug": "bcom-cost-accounting",
+    "tutor": "Neha Kumari",
+    "category": "B.Com",
+    "price": 8500,
+    "oldPrice": 11999,
+    "badge": "Recommended",
+    "rating": 4.5,
+    "students": 820,
+    "description": "B.Com Cost Accounting.",
+    "duration": "85 Hours",
+    "language": "Hindi + English",
+    "lectures": 60,
+    "validity": "10 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Numericals"
+    ],
+    "syllabus": [
+      "Cost Sheet",
+      "Budgeting",
+      "Standard Costing"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Cost Accounting"
+  },
+  {
+    "id": 30,
+    "title": "Business and Technology (BT)",
+    "slug": "acca-bt",
+    "tutor": "Rahul Mehta",
+    "category": "ACCA",
+    "price": 9000,
+    "oldPrice": 12999,
+    "badge": "Beginner",
+    "rating": 4.3,
+    "students": 650,
+    "description": "ACCA BT.",
+    "duration": "70 Hours",
+    "language": "English",
+    "lectures": 55,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Business",
+      "Technology",
+      "Ethics"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Applied Knowledge"
+  },
+  {
+    "id": 31,
+    "title": "Management Accounting (MA)",
+    "slug": "acca-ma",
+    "tutor": "Neha Sharma",
+    "category": "ACCA",
+    "price": 9500,
+    "oldPrice": 13999,
+    "badge": "Popular",
+    "rating": 4.4,
+    "students": 720,
+    "description": "ACCA MA.",
+    "duration": "80 Hours",
+    "language": "English",
+    "lectures": 60,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Numericals"
+    ],
+    "syllabus": [
+      "Costing",
+      "Budgeting",
+      "Performance"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Applied Knowledge"
+  },
+  {
+    "id": 32,
+    "title": "Financial Accounting (FA)",
+    "slug": "acca-fa",
+    "tutor": "Deepak Jain",
+    "category": "ACCA",
+    "price": 10000,
+    "oldPrice": 14999,
+    "badge": "Best Seller",
+    "rating": 4.7,
+    "students": 1050,
+    "description": "ACCA FA.",
+    "duration": "90 Hours",
+    "language": "English",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Beginner",
+    "isPopular": false,
+    "features": [
+      "Concept clarity"
+    ],
+    "syllabus": [
+      "Double Entry",
+      "Statements",
+      "Adjustments"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/account-tn.webp",
+    "img": "/account.webp",
+    "subCategory": "Applied Knowledge"
+  },
+  {
+    "id": 33,
+    "title": "Corporate and Business Law (LW)",
+    "slug": "acca-lw",
+    "tutor": "Kunal Sharma",
+    "category": "ACCA",
+    "price": 11000,
+    "oldPrice": 15999,
+    "badge": "Hot",
+    "rating": 4.5,
+    "students": 780,
+    "description": "ACCA Law.",
+    "duration": "85 Hours",
+    "language": "English",
+    "lectures": 65,
+    "validity": "10 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Case laws"
+    ],
+    "syllabus": [
+      "Contract",
+      "Company Law",
+      "Business Law"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": false,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Applied Skills"
+  },
+  {
+    "id": 34,
+    "title": "Financial Management (FM)",
+    "slug": "acca-fm",
+    "tutor": "Neha Kumari",
+    "category": "ACCA",
+    "price": 12000,
+    "oldPrice": 16999,
+    "badge": "Trending",
+    "rating": 4.6,
+    "students": 910,
+    "description": "ACCA FM.",
+    "duration": "95 Hours",
+    "language": "English",
+    "lectures": 70,
+    "validity": "12 Months",
+    "level": "Intermediate",
+    "isPopular": false,
+    "features": [
+      "Numericals"
+    ],
+    "syllabus": [
+      "TVM",
+      "Risk",
+      "Investment"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/maths-tn.webp",
+    "img": "/maths.webp",
+    "subCategory": "Applied Skills"
+  },
+  {
+    "id": 35,
+    "title": "Strategic Business Leader (SBL)",
+    "slug": "acca-sbl",
+    "tutor": "Rahul Mehta",
+    "category": "ACCA",
+    "price": 15000,
+    "oldPrice": 19999,
+    "badge": "Advanced",
+    "rating": 4.8,
+    "students": 1200,
+    "description": "ACCA SBL.",
+    "duration": "110 Hours",
+    "language": "English",
+    "lectures": 80,
+    "validity": "12 Months",
+    "level": "Advanced",
+    "isPopular": false,
+    "features": [
+      "Strategy"
+    ],
+    "syllabus": [
+      "Leadership",
+      "Strategy",
+      "Risk"
+    ],
+    "includes": {
+      "videos": true,
+      "notes": true,
+      "testSeries": true,
+      "downloadable": true
+    },
+    "thumbnail": "/business-tn.webp",
+    "img": "/business.webp",
+    "subCategory": "Strategic Professional"
   }
 ]

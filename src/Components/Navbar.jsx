@@ -39,18 +39,18 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4 text-lg">
-            <a href="https://api.whatsapp.com/send/?phone=8800905010" target="_blank" rel="noreferrer" className="hover:text-green-400">
+            <Link to="https://api.whatsapp.com/send/?phone=8800905010" target="_blank" rel="noreferrer" className="hover:text-green-400">
               <FaWhatsapp />
-            </a>
-            <a href="https://www.youtube.com/@AmandeepCommerceClasses" target="_blank" rel="noreferrer" className="hover:text-red-500">
+            </Link>
+            <Link to="https://www.youtube.com/@AmandeepCommerceClasses" target="_blank" rel="noreferrer" className="hover:text-red-500">
               <FaYoutube />
-            </a>
-            <a href="https://www.instagram.com/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-pink-500">
+            </Link>
+            <Link to="https://www.instagram.com/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-pink-500">
               <FaInstagram />
-            </a>
-            <a href="https://t.me/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-blue-400">
+            </Link>
+            <Link to="https://t.me/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-blue-400">
               <FaTelegramPlane />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

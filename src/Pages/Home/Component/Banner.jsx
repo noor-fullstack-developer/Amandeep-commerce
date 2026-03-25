@@ -2,68 +2,54 @@ import "swiper/css";
 import React from "react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Hero from "../Assets/hero3.webp";
 import Hero1 from "../Assets/Hero.webp";
 import Hero2 from "../Assets/hero2.webp";
-import Hero from "../Assets/hero3.webp";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <section className="relative h-[70vh] w-full overflow-hidden">
-      {/* Swiper */}
+    <section className="relative w-full h-[70vh] sm:h-[80vh] md:h-[90vh] lg:h-screen overflow-hidden">
+      
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         className="h-full w-full"
       >
-        <SwiperSlide>
-          <img
-            src={Hero}
-            alt="Slide 1"
-            className="w-full h-full object-fit-cover"
-          />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <img
-            src={Hero1}
-            alt="Slide 2"
-            className="w-full h-full object-fit-cover"
-          />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <img
-            src={Hero2}
-            alt="Slide 3"
-            className="w-full h-full object-fit-cover"
-          />
-        </SwiperSlide>
+        {[Hero, Hero1, Hero2].map((img, i) => (
+          <SwiperSlide key={i}>
+            <img
+              src={img}
+              alt={`Slide ${i + 1}`}
+              className="w-full h-full object-cover object-center"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
-      {/* Overlay */}
-      {/* <div className="absolute inset-0 bg-linear-to-r from-black/30 via-black/40 to-black/50 z-10"></div>
+      {/* Optional Overlay for better readability */}
+      <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/20 to-transparent z-10"></div>
 
-      <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
-        <div className="max-w-3xl text-white">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-            Empowering Students for a Brighter Future
+      {/* Optional Content */}
+      {/* <div className="absolute inset-0 z-20 flex items-center justify-start px-4 sm:px-8 md:px-16">
+        <div className="max-w-xl text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Transform Your Commerce Career
           </h1>
 
-          <p className="mt-6 text-lg md:text-xl text-gray-200">
-            Interactive learning, expert teachers, and structured courses designed to help you succeed.
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-200">
+            Learn from experts and achieve success with structured courses.
           </p>
 
-          <Link
-            to="/courses"
-            className="inline-block mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-lg font-semibold transition duration-300 shadow-lg hover:scale-105"
-          >
-            Explore Courses
-          </Link>
+          <button className="mt-6 px-6 py-2 sm:px-8 sm:py-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm sm:text-lg font-semibold transition">
+            Enroll Now
+          </button>
         </div>
       </div> */}
+      
     </section>
   );
 };
