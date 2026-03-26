@@ -1,6 +1,7 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import coursesData from "../../Data/Course.json";
+import { startPayment } from "../../Components/Payment.jsx";
 
 const categories = ["All", "11th", "12th", "CA", "B.Com", "ACCA"];
 const caSubCategories = ["All", "Foundation", "Intermediate", "Final"];
@@ -28,8 +29,7 @@ const Index = () => {
         return coursesData.filter((c) => c.category === "CA");
       }
       return coursesData.filter(
-        (c) =>
-          c.category === "CA" && c.subCategory === activeSubCategory
+        (c) => c.category === "CA" && c.subCategory === activeSubCategory,
       );
     }
 
@@ -41,7 +41,7 @@ const Index = () => {
 
   const paginatedCourses = filteredCourses.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   return (
@@ -57,7 +57,7 @@ const Index = () => {
             }}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
               activeCategory === cat
-                ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105"
+                ? "bg-linear-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105"
                 : "bg-gray-100 text-gray-700 hover:bg-indigo-100"
             }`}
           >
@@ -88,7 +88,6 @@ const Index = () => {
       {/* COURSES */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          
           {paginatedCourses.length === 0 && (
             <p className="text-center text-gray-500 col-span-full">
               No courses found.
@@ -106,13 +105,9 @@ const Index = () => {
                     {course.badge}
                   </span>
 
-                  <h3 className="text-lg font-bold mb-1">
-                    {course.title}
-                  </h3>
+                  <h3 className="text-lg font-bold mb-1">{course.title}</h3>
 
-                  <p className="text-gray-500 text-sm mb-1">
-                    {course.tutor}
-                  </p>
+                  <p className="text-gray-500 text-sm mb-1">{course.tutor}</p>
 
                   <p className="text-sm text-yellow-600 mb-2">
                     ⭐ {course.rating} | {course.students}+ students
@@ -120,9 +115,7 @@ const Index = () => {
 
                   <p className="text-gray-500 text-sm mb-2">
                     {course.category}
-                    {course.subCategory
-                      ? ` - ${course.subCategory}`
-                      : ""}
+                    {course.subCategory ? ` - ${course.subCategory}` : ""}
                   </p>
 
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -141,13 +134,14 @@ const Index = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800">
+                    <button
+                      onClick={() => startPayment(course, navigate)}
+                      className="flex-1 bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800"
+                    >
                       Enroll
                     </button>
                     <button
-                      onClick={() =>
-                        navigate(`/course/${course.slug}`)
-                      }
+                      onClick={() => navigate(`/course/${course.id}`)}
                       className="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg hover:bg-indigo-50"
                     >
                       Details
@@ -163,35 +157,29 @@ const Index = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
             <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.max(prev - 1, 1))
-              }
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
             >
               Prev
             </button>
 
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-              (num) => (
-                <button
-                  key={num}
-                  onClick={() => setCurrentPage(num)}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentPage === num
-                      ? "bg-indigo-600 text-white"
-                      : "bg-gray-200 hover:bg-gray-300"
-                  }`}
-                >
-                  {num}
-                </button>
-              )
-            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+              <button
+                key={num}
+                onClick={() => setCurrentPage(num)}
+                className={`px-4 py-2 rounded-lg ${
+                  currentPage === num
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              >
+                {num}
+              </button>
+            ))}
 
             <button
               onClick={() =>
-                setCurrentPage((prev) =>
-                  Math.min(prev + 1, totalPages)
-                )
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
             >
@@ -211,8 +199,7 @@ const Index = () => {
           Start Your Commerce Journey Today 🚀
         </h2>
         <p className="max-w-xl mx-auto text-gray-400 mb-6">
-          Join thousands of successful students with smart strategy &
-          notes.
+          Join thousands of successful students with smart strategy & notes.
         </p>
         <button className="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:scale-105 transition">
           Start Learning Today

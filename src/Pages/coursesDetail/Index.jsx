@@ -1,13 +1,14 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import courses from "../../Data/Course.json";
+import { startPayment } from "../../Components/Payment.jsx";
 
 const CourseDetail = () => {
   const { id } = useParams();
 
-  const course = courses.find(
-    (c) => c.id === Number(id)
-  );
+  const navigate = useNavigate();
+
+  const course = courses.find((c) => c.id === Number(id));
 
   if (!course) return <h2>Course not found</h2>;
 
@@ -23,11 +24,21 @@ const CourseDetail = () => {
       <p className="text-gray-600 mb-4">{course.description}</p>
 
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <p><strong>Tutor:</strong> {course.tutor}</p>
-        <p><strong>Lectures:</strong> {course.lectures}</p>
-        <p><strong>Language:</strong> {course.language}</p>
-        <p><strong>Validity:</strong> {course.validity}</p>
-        <p><strong>Duration:</strong> {course.duration}</p>
+        <p>
+          <strong>Tutor:</strong> {course.tutor}
+        </p>
+        <p>
+          <strong>Lectures:</strong> {course.lectures}
+        </p>
+        <p>
+          <strong>Language:</strong> {course.language}
+        </p>
+        <p>
+          <strong>Validity:</strong> {course.validity}
+        </p>
+        <p>
+          <strong>Duration:</strong> {course.duration}
+        </p>
       </div>
 
       <h2 className="text-xl font-semibold mb-2">Syllabus</h2>
@@ -37,7 +48,10 @@ const CourseDetail = () => {
         ))}
       </ul>
 
-      <button className="px-6 py-3 bg-green-600 text-white rounded-lg">
+      <button
+        onClick={() => startPayment(course, navigate)}
+        className="px-6 py-3 bg-green-600 text-white rounded-lg"
+      >
         Enroll Now
       </button>
     </div>

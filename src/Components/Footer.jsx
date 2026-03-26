@@ -100,25 +100,25 @@ const Footer = () => {
           <div className="flex gap-4 mt-8">
             <Link
               to="https://api.whatsapp.com/send/?phone=8800905010&text=Hey"
-              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-green-500 transition-all duration-300"
             >
               <FaWhatsapp className="text-lg" />
             </Link>
             <Link
               to="https://www.youtube.com/@AmandeepCommerceClasses"
-              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-red-500 transition-all duration-300"
             >
               <FaYoutube className="text-lg" />
             </Link>
             <Link
               to="https://www.instagram.com/amandeepcommerceclasses"
-              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-linear-to-r from-pink-500 to-red-500 transition-all duration-300"
             >
               <FaInstagram className="text-lg" />
             </Link>
             <Link
               to="https://t.me/amandeepcommerceclasses"
-              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-yellow-500 transition-all duration-300"
+              className="bg-gray-800 p-3 rounded-full cursor-pointer hover:scale-110 hover:bg-blue-500 transition-all duration-300"
             >
               <FaTelegramPlane className="text-lg" />
             </Link>
@@ -132,7 +132,7 @@ const Footer = () => {
           <p>© 2026 Amandeep Commerce Classes. All Rights Reserved.</p>
           <p className="mt-2 md:mt-0">
             Designed & Developed by{" "}
-            <span className="text-yellow-400 font-medium">Edutech</span>
+            <span className="text-red-600 font-medium">Edutech</span>
           </p>
         </div>
       </div>

@@ -5,12 +5,10 @@ import courses from "../../../Data/Course.json";
 const Courses = () => {
   const navigate = useNavigate();
 
-  const filteredCourses = courses.filter(
-    (course) => course.isPopular
-  );
+  const filteredCourses = courses.filter((course) => course.isPopular);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 ">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-16">
           Most Popular Courses
@@ -20,29 +18,42 @@ const Courses = () => {
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+              className="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border"
             >
-              <img
-                src={course.img}
-                alt={course.title}
-                className="h-56 w-full object-cover"
-              />
+              <div className="p-6 flex flex-col justify-between h-full">
+                <div>
+                  <span className="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full mb-3">
+                    {course.badge}
+                  </span>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">{course.title}</h3>
-                <p className="text-gray-900 font-semibold mb-2">
-                  Tutor: {course.tutor}
-                </p>
-                <p className="text-gray-600 text-sm">
-                  {course.description}
-                </p>
+                  <h3 className="text-lg font-bold mb-1">{course.title}</h3>
 
-                <button
-                  onClick={() => navigate(`/course/${course.id}`)}
-                  className="mt-6 w-full py-2 bg-linear-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                  Learn More
-                </button>
+                  <p className="text-gray-500 text-sm mb-1">{course.tutor}</p>
+
+                  <p className="text-sm text-yellow-600 mb-2">
+                    ⭐ {course.rating} | {course.students}+ students
+                  </p>
+
+                  <p className="text-gray-500 text-sm mb-2">
+                    {course.category}
+                    {course.subCategory ? ` - ${course.subCategory}` : ""}
+                  </p>
+
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {course.description}
+                  </p>
+                </div>
+                
+                <div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => navigate(`/course/${course.id}`)}
+                      className="flex-1 border border-indigo-700 text-black py-2 rounded-lg bg-linear-to-r from-blue-400 to-purple-400"
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

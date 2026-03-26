@@ -10,20 +10,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <section className="relative w-full h-[70vh] sm:h-[80vh] md:h-[90vh] lg:h-screen overflow-hidden">
+    <section className="relative w-full lg:h-screen overflow-hidden">
       
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
-        className="h-full w-full"
+        className="w-full"
       >
         {[Hero, Hero1, Hero2].map((img, i) => (
           <SwiperSlide key={i}>
             <img
               src={img}
               alt={`Slide ${i + 1}`}
-              className="w-full h-full object-cover object-center"
+              className="w-full object-cover object-center"
               loading={i === 0 ? "eager" : "lazy"}
             />
           </SwiperSlide>

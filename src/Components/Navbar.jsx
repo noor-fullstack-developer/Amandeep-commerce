@@ -59,7 +59,7 @@ const Navbar = () => {
       <nav className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
-          <img src="/Logo.png" alt="Logo" className="h-10" />
+          <img src="/logo-removebg.png" alt="Logo" className="h-6" />
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-8 font-medium">
