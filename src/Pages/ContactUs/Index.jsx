@@ -145,7 +145,7 @@ const Index = () => {
             {/* Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition hover:scale-[1.02] shadow-md"
+              className="w-full bg-linear-to-r from-blue-600 to-indigo-600 text-white py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition hover:scale-[1.02] shadow-md"
             >
               Send Message
             </button>

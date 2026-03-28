@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   return (
-    <section className="relative w-full lg:h-screen overflow-hidden">
+    <section className="relative w-full lg:h-[60vh] overflow-hidden">
       
       <Swiper
         modules={[Autoplay]}
