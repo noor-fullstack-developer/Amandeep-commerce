@@ -2,7 +2,7 @@ import React from "react";
 
 const Videos = () => {
   return (
-    <section className="py-12 md:py-20 bg-linear-to-t from-blue-100 to-purple-100">
+    <section className="py-12 md:py-20 bg-linear-to-t from-gray-100 to-white">
       <div className="max-w-360 mx-auto px-4 md:px-6">
         <h1 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-14">
           What We Truly Believe In

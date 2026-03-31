@@ -1,7 +1,7 @@
-import React, { useState, useMemo, useEffect, useContext } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import coursesData from "../../Data/Course.json";
-import { startPayment } from "../../Components/Payment.jsx";
+import axios from "axios";
 
 const categories = ["All", "11th", "12th", "CA", "B.Com", "ACCA"];
 const caSubCategories = ["All", "Foundation", "Intermediate", "Final"];
@@ -20,7 +20,7 @@ const Index = () => {
     setCurrentPage(1);
   }, [activeCategory, activeSubCategory]);
 
-  // Optimized filtering
+  // Filter courses
   const filteredCourses = useMemo(() => {
     if (activeCategory === "All") return coursesData;
 
@@ -36,13 +36,72 @@ const Index = () => {
     return coursesData.filter((c) => c.category === activeCategory);
   }, [activeCategory, activeSubCategory]);
 
-  // Pagination
+  // Pagination logic
   const totalPages = Math.ceil(filteredCourses.length / ITEMS_PER_PAGE);
 
-  const paginatedCourses = filteredCourses.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
-  );
+  const paginatedCourses = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredCourses.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredCourses, currentPage]);
+
+  const handleEnroll = async (course) => {
+    try {
+      if (!course || !course.price) {
+        alert("Invalid course data");
+        return;
+      }
+
+      const email = prompt("Enter your email:");
+      if (!email) return alert("Email is required");
+
+      // Step 1: Create order from backend
+      const { data } = await axios.post("http://localhost:5000/create-order", {
+        amount: course.price,
+      });
+
+      // Step 2: Razorpay options
+      const options = {
+        key: "rzp_test_SXjpC05e6GYKkB",
+        amount: data.amount,
+        currency: "INR",
+        name: course.title,
+        description: "Course Purchase",
+        order_id: data.id,
+
+        handler: async function (response) {
+          try {
+            // Step 3: Verify payment
+            await axios.post("http://localhost:5000/verify-payment", {
+              ...response,
+              email,
+              courseId: course.id,
+            });
+
+            alert("✅ Payment Successful!");
+            navigate("/success"); // optional page
+          } catch (err) {
+            console.error(err);
+            alert("Payment verification failed");
+          }
+        },
+
+        prefill: {
+          email: email,
+        },
+
+        theme: {
+          color: "#4f46e5",
+        },
+      };
+
+      // Step 4: Open Razorpay
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while initiating payment");
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -126,20 +185,21 @@ const Index = () => {
                 <div>
                   <div className="mb-4">
                     <span className="text-xl font-bold text-indigo-700">
-                      ₹{course.price.toLocaleString()}
+                      ₹{course.price?.toLocaleString()}
                     </span>
                     <span className="text-sm line-through text-gray-400 ml-2">
-                      ₹{course.oldPrice.toLocaleString()}
+                      ₹{course.oldPrice?.toLocaleString()}
                     </span>
                   </div>
 
                   <div className="flex gap-2">
                     <button
-                      onClick={() => startPayment(course, navigate)}
+                      onClick={() => handleEnroll(course)}
                       className="flex-1 bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800"
                     >
                       Enroll
                     </button>
+
                     <button
                       onClick={() => navigate(`/course/${course.id}`)}
                       className="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg hover:bg-indigo-50"

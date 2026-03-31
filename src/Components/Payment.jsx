@@ -30,7 +30,7 @@ export const startPayment = async (course, navigate) => {
           }
         );
 
-        // ✅ React Navigation (CORRECT WAY)
+        // React Navigation (CORRECT WAY)
         navigate("/my-courses");
       },
 

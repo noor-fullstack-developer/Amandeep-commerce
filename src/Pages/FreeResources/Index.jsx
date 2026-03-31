@@ -4,7 +4,7 @@ import freeCourses from "../../Data/freeResourses.json";
 
 const Index = () => {
   return (
-    <div className="bg-linear-to-t from-blue-100 to-purple-100 min-h-screen py-20">
+    <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
@@ -43,7 +43,7 @@ const Index = () => {
               </div>
 
               <Link
-                to={course.link}
+                to={`/course/${course.id}`}
                 className="block text-center w-full py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
               >
                 Get Started

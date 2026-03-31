@@ -71,6 +71,16 @@ const Navbar = () => {
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
               </li>
             ))}
+            <li className="relative group cursor-pointer">
+  <a
+    href="https://razorpay.me/@msedutechsolutions"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Buy
+  </a>
+  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+</li>
           </ul>
 
           {/* Mobile Button */}

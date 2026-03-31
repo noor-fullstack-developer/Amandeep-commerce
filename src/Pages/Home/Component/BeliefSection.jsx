@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 
 const BeliefSection = () => {
   return (
-    <section className="py-20 bg-linear-to-t from-purple-100 to-blue-100">
+    <section className="py-20 bg-linear-to-t from-white to-gray-100">
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Card Container */}

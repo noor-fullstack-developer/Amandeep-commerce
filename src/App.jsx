@@ -10,6 +10,7 @@ import Terms from "./Pages/terms/Index.jsx";
 import { Route, Routes } from "react-router-dom";
 import CoursesDetail from "./Pages/coursesDetail/Index.jsx";
 
+
 const App = () => {
   return (
     <Routes>
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-and-conditions" element={<Terms />} />
         <Route path="/free-resources" element={<FreeResources />} />
-      </Route>
+        </Route>
     </Routes>
   );
 };
