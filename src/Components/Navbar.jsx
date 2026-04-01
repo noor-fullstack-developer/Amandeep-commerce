@@ -39,16 +39,36 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4 text-lg">
-            <Link to="https://api.whatsapp.com/send/?phone=8800905010" target="_blank" rel="noreferrer" className="hover:text-green-400">
+            <Link
+              to="https://api.whatsapp.com/send/?phone=8800905010"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-green-400"
+            >
               <FaWhatsapp />
             </Link>
-            <Link to="https://www.youtube.com/@AmandeepCommerceClasses" target="_blank" rel="noreferrer" className="hover:text-red-500">
+            <Link
+              to="https://www.youtube.com/@AmandeepCommerceClasses"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-red-500"
+            >
               <FaYoutube />
             </Link>
-            <Link to="https://www.instagram.com/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-pink-500">
+            <Link
+              to="https://www.instagram.com/amandeepcommerceclasses"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-pink-500"
+            >
               <FaInstagram />
             </Link>
-            <Link to="https://t.me/amandeepcommerceclasses" target="_blank" rel="noreferrer" className="hover:text-blue-400">
+            <Link
+              to="https://t.me/amandeepcommerceclasses"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-400"
+            >
               <FaTelegramPlane />
             </Link>
           </div>
@@ -59,28 +79,26 @@ const Navbar = () => {
       <nav className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
-          <img src="/logo-removebg.png" alt="Logo" className="h-6" />
+          <img src="/logo-removebg.png" alt="Logo" className="h-8" />
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-8 font-medium">
-            {["/", "Free Resources", "Courses", "Contact Us", "About"].map((item, i) => (
-              <li key={i} className="relative group cursor-pointer">
-                <Link to={item === "/" ? "/" : `/${item.toLowerCase().replace(/ /g, "-")}`}>
-                  {item === "/" ? "Home" : item}
-                </Link>
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-              </li>
-            ))}
-            <li className="relative group cursor-pointer">
-  <a
-    href="https://razorpay.me/@msedutechsolutions"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Buy
-  </a>
-  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-</li>
+            {["/", "Free Resources", "Courses", "Contact Us", "About"].map(
+              (item, i) => (
+                <li key={i} className="relative group cursor-pointer">
+                  <Link
+                    to={
+                      item === "/"
+                        ? "/"
+                        : `/${item.toLowerCase().replace(/ /g, "-")}`
+                    }
+                  >
+                    {item === "/" ? "Home" : item}
+                  </Link>
+                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </li>
+              ),
+            )}
           </ul>
 
           {/* Mobile Button */}
@@ -92,16 +110,22 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {mobileNav && (
               <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-xl p-4 flex flex-col gap-4 animate-fadeIn">
-                {["/", "Free Resources", "Courses", "Contact Us", "About"].map((item, i) => (
-                  <Link
-                    key={i}
-                    to={item === "/" ? "/" : `/${item.toLowerCase().replace(/ /g, "-")}`}
-                    onClick={() => setMobileNav(false)}
-                    className="hover:text-blue-600"
-                  >
-                    {item === "/" ? "Home" : item}
-                  </Link>
-                ))}
+                {["/", "Free Resources", "Courses", "Contact Us", "About"].map(
+                  (item, i) => (
+                    <Link
+                      key={i}
+                      to={
+                        item === "/"
+                          ? "/"
+                          : `/${item.toLowerCase().replace(/ /g, "-")}`
+                      }
+                      onClick={() => setMobileNav(false)}
+                      className="hover:text-blue-600"
+                    >
+                      {item === "/" ? "Home" : item}
+                    </Link>
+                  ),
+                )}
               </div>
             )}
           </div>

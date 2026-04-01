@@ -57,7 +57,7 @@
     "lectures": 40,
     "validity": "6 Months",
     "level": "Intermediate",
-    "isPopular": false,
+    "isPopular": true,
     "features": [
       "Revision",
       "Case studies",
