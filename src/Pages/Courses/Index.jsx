@@ -17,10 +17,16 @@ const ITEMS_PER_PAGE = 6;
 const Index = () => {
   const [activeSubCategory, setActiveSubCategory] = useState("All");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [isProcessing, setIsProcessing] = useState(null); // Track which course is processing
+  const [isProcessing, setIsProcessing] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState([]);
+
+  // Modal & User States
+  const [userEmail, setUserEmail] = useState("");
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,51 +65,60 @@ const Index = () => {
     return filteredCourses.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredCourses, currentPage]);
 
-  const handlePayment = async (course) => {
-    setIsProcessing(course._id);
+  // --- MODAL & PAYMENT LOGIC ---
+
+  const handleEnrollClick = (course) => {
+    setSelectedCourse(course);
+    setShowEmailModal(true);
+  };
+
+  const confirmAndPay = async (e) => {
+    e.preventDefault();
+    if (!userEmail || !selectedCourse) return;
+
+    setShowEmailModal(false);
+    setIsProcessing(selectedCourse._id);
+
     try {
       const res = await myAxios.post("/payments/create-order", {
-        amount: course.price,
+        amount: selectedCourse.price,
       });
 
       const options = {
-        key: "rzp_test_SgUshnRM5XoZ9A",
+        key: "rzp_test_SgUshnRM5XoZ9A", // Replace with your live key in production
         amount: res.data.amount,
         currency: "INR",
         name: "Amandeep Commerce Classes",
-        description: `Enrollment for ${course.title}`,
         order_id: res.data.id,
+        prefill: { email: userEmail },
         handler: async function (response) {
           try {
-            const result = await myAxios.post("/payments/verify", {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              email: "student@gmail.com", // Replace with actual logged-in user email
-              courseId: course._id,
-              courseName: course.title, // Added this
-              amount: course.price, // Added this
+            await myAxios.post("/payments/verify", {
+              ...response,
+              email: userEmail,
+              courseId: selectedCourse._id,
+              courseName: selectedCourse.title,
+              amount: selectedCourse.price,
             });
-            alert("Payment Successful! Welcome to the course.");
+            alert("Payment Successful! Check your email.");
           } catch (err) {
-            alert(
-              "Verification failed but payment was taken. Please contact support.",
-            );
+            alert("Verification failed. Please contact support.");
           }
         },
-        theme: { color: "#4F46E5" },
+        modal: {
+          ondismiss: function () {
+            setIsProcessing(null);
+          },
+        },
       };
-
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (err) {
       console.error("Payment Error:", err);
-    } finally {
       setIsProcessing(null);
     }
   };
 
-  // Skeleton Loader Component
   const SkeletonCard = () => (
     <div className="bg-white rounded-2xl p-6 border animate-pulse">
       <div className="h-4 w-20 bg-gray-200 rounded mb-4"></div>
@@ -122,20 +137,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] pb-20 font-sans text-slate-900">
-      {/* Header Section */}
       <header className="bg-white border-b pt-12 pb-8 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
             Master Commerce with{" "}
             <span className="text-indigo-600">Amandeep Classes</span>
           </h1>
-          <p className="text-slate-500 max-w-2xl mx-auto mb-8">
-            Expert-led courses designed to help you ace your exams and build a
-            solid professional foundation.
-          </p>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -143,10 +152,10 @@ const Index = () => {
                   setActiveCategory(cat);
                   setActiveSubCategory("All");
                 }}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all transform active:scale-95 ${
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   activeCategory === cat
-                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200"
-                    : "bg-white border text-slate-600 hover:border-indigo-400 hover:text-indigo-600"
+                    ? "bg-indigo-600 text-white shadow-lg"
+                    : "bg-white border text-slate-600 hover:border-indigo-400"
                 }`}
               >
                 {cat}
@@ -154,9 +163,8 @@ const Index = () => {
             ))}
           </div>
 
-          {/* CA Sub-category */}
           {activeCategory === "CA" && (
-            <div className="flex justify-center gap-2 mt-6 animate-in fade-in slide-in-from-top-2">
+            <div className="flex justify-center gap-2 mt-6">
               {caSubCategories.map((sub) => (
                 <button
                   key={sub}
@@ -164,7 +172,7 @@ const Index = () => {
                   className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-colors ${
                     activeSubCategory === sub
                       ? "bg-slate-800 text-white"
-                      : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                      : "bg-slate-100 text-slate-500"
                   }`}
                 >
                   {sub}
@@ -193,33 +201,21 @@ const Index = () => {
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-4">
                       <span
-                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
-                          course.isPopular
-                            ? "bg-amber-100 text-amber-700"
-                            : "bg-blue-100 text-blue-700"
-                        }`}
+                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${course.isPopular ? "bg-amber-100 text-amber-700" : "bg-blue-100 text-blue-700"}`}
                       >
                         {course.isPopular ? "Best Seller" : "New Release"}
                       </span>
-                      <BookOpen
-                        size={18}
-                        className="text-slate-300 group-hover:text-indigo-500 transition-colors"
-                      />
                     </div>
-
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600">
                       {course.title}
                     </h3>
-
                     <div className="flex items-center gap-2 text-slate-500 text-sm mb-4">
                       <User size={14} />
                       <span>{course.tutor}</span>
                     </div>
-
                     <p className="text-slate-600 text-sm line-clamp-2 mb-6 leading-relaxed">
                       {course.description}
                     </p>
-
                     <div className="flex items-baseline gap-2 mb-8">
                       <span className="text-3xl font-black text-slate-900">
                         ₹{course.price}
@@ -227,19 +223,12 @@ const Index = () => {
                       <span className="text-sm line-through text-slate-400">
                         ₹{course.oldPrice}
                       </span>
-                      <span className="text-xs font-bold text-green-600 ml-auto">
-                        {Math.round(
-                          ((course.oldPrice - course.price) / course.oldPrice) *
-                            100,
-                        )}
-                        % OFF
-                      </span>
                     </div>
                   </div>
 
                   <div className="flex gap-3 mt-auto">
                     <button
-                      onClick={() => handlePayment(course)}
+                      onClick={() => handleEnrollClick(course)}
                       disabled={isProcessing === course._id}
                       className="flex-2 bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all flex justify-center items-center gap-2 disabled:opacity-70"
                     >
@@ -251,7 +240,7 @@ const Index = () => {
                     </button>
                     <button
                       onClick={() => navigate(`/course/${course._id}`)}
-                      className="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all flex justify-center items-center"
+                      className="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all"
                     >
                       Details
                     </button>
@@ -260,7 +249,7 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Pagination */}
+            {/* Pagination Controls */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center mt-16 gap-3">
                 <button
@@ -268,33 +257,27 @@ const Index = () => {
                     setCurrentPage((prev) => Math.max(prev - 1, 1))
                   }
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg bg-white border text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50 transition-all"
+                  className="p-2 rounded-lg bg-white border text-slate-600 disabled:opacity-50 hover:bg-indigo-50"
                 >
                   <ChevronsLeft size={20} />
                 </button>
-
                 <div className="flex gap-2">
                   {[...Array(totalPages)].map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`w-10 h-10 rounded-lg font-bold transition-all ${
-                        currentPage === i + 1
-                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
-                          : "bg-white border text-slate-500 hover:border-indigo-300"
-                      }`}
+                      className={`w-10 h-10 rounded-lg font-bold transition-all ${currentPage === i + 1 ? "bg-indigo-600 text-white shadow-md shadow-indigo-200" : "bg-white border text-slate-500"}`}
                     >
                       {i + 1}
                     </button>
                   ))}
                 </div>
-
                 <button
                   onClick={() =>
                     setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                   }
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg bg-white border text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50 transition-all"
+                  className="p-2 rounded-lg bg-white border text-slate-600 disabled:opacity-50 hover:bg-indigo-50"
                 >
                   <ChevronsRight size={20} />
                 </button>
@@ -307,9 +290,6 @@ const Index = () => {
             <h3 className="text-xl font-bold text-slate-800">
               No courses found
             </h3>
-            <p className="text-slate-500">
-              Try adjusting your filters to find what you're looking for.
-            </p>
             <button
               onClick={() => {
                 setActiveCategory("All");
@@ -322,6 +302,55 @@ const Index = () => {
           </div>
         )}
       </main>
+
+      {/* --- INTEGRATED MODAL --- */}
+      {showEmailModal && (
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all animate-in zoom-in-95 duration-200">
+            <div className="text-center mb-6">
+              <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="text-indigo-600" size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900">
+                Enrollment Details
+              </h3>
+              <p className="text-slate-500 mt-2">
+                Enter your email to receive your course access and receipt.
+              </p>
+            </div>
+            <form onSubmit={confirmAndPay} className="space-y-4">
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                  placeholder="example@gmail.com"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
+              </div>
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowEmailModal(false)}
+                  className="flex-1 py-3 px-4 font-semibold text-slate-600 hover:bg-slate-50 rounded-xl transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 py-3 px-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all flex justify-center items-center gap-2"
+                >
+                  Proceed to Pay <ArrowRight size={18} />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
