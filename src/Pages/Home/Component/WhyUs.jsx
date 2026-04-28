@@ -9,7 +9,7 @@ const WhyUs = () => {
       id: 1,
       title: "Fun and Interactive Learning",
       description:
-        "Teaching in a fun and interactive manner keeps students engaged till the last minute.",
+        "We teach in a fun and interactive manner keeps students engaged till the last minute.",
       img: Fun,
     },
     {

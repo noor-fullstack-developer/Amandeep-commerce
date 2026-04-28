@@ -7,23 +7,24 @@ import Courses from "./Pages/Courses/Index.jsx";
 import FreeResources from "./Pages/FreeResources/Index.jsx";
 import Privacy from "./Pages/Privacy/Index.jsx";
 import Terms from "./Pages/terms/Index.jsx";
+import Admin from "./Pages/Admin/Index.jsx";
 import { Route, Routes } from "react-router-dom";
-import CoursesDetail from "./Pages/coursesDetail/Index.jsx";
-
+import CourseDetail from "./Pages/coursesDetail/Index.jsx";
 
 const App = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/AmandeepAdmin8800905010" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="/Contact-Us" element={<Contact />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/course/:id" element={<CoursesDetail />} />
+        <Route path="/course/:id" element={<CourseDetail />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-and-conditions" element={<Terms />} />
         <Route path="/free-resources" element={<FreeResources />} />
-        </Route>
+      </Route>
     </Routes>
   );
 };

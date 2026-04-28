@@ -4,7 +4,7 @@ import freeCourses from "../../Data/freeResourses.json";
 
 const Index = () => {
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-[80vh] py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">

@@ -1,7 +1,6 @@
 export const startPayment = async (course, navigate) => {
   try {
-    const { data } = await axios.post(
-      "http://localhost:5000/api/payment/create-order",
+    const { data } = await myAxios.post("/api/payment/create-order",
       {
         amount: course.price,
         courseId: course.id,
@@ -17,8 +16,7 @@ export const startPayment = async (course, navigate) => {
       order_id: data.id,
 
       handler: async function (response) {
-        await axios.post(
-          "http://localhost:5000/api/payment/verify",
+        await myAxios.post("/api/payment/verify",
           {
             ...response,
             courseId: course.id,

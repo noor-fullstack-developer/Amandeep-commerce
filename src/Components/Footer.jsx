@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   FaWhatsapp,
@@ -8,6 +9,7 @@ import {
   FaApple,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Logo from "../Assets/Logo.JPG";
 
 const Footer = () => {
   return (
@@ -19,17 +21,16 @@ const Footer = () => {
         {/* ================= Left Section ================= */}
         <div>
           <h2 className="text-3xl font-bold mb-6 tracking-wide">
-            Amandeep Commerce Classes
+            <img src={Logo} alt="Logo" className="w-16 h-16 inline-block mr-4" />Amandeep Commerce Classes
           </h2>
 
           <ul className="space-y-3 text-sm leading-relaxed text-gray-400">
-            <li>✔ 20,000+ students through Full Course & Fastrack Batches</li>
-            <li>✔ 1,50,000+ students impacted via YouTube Revision</li>
-            <li>✔ Famous for Smart Notes & Last Day Revision</li>
-            <li>✔ 50,000+ students use Smart Notes</li>
-            <li>✔ First “Khazana Notes” for CA Final DT</li>
-            <li>✔ Study CA Final DT in the smartest way</li>
-            <li>✔ Cleared CA Final in 2nd Attempt – Attempts don't matter!</li>
+            <li>✔ 1000+ students have been taught by CA Deepak Jain sir</li>
+            <li>✔ Providing 2lacs+ students mentorship by Instagram</li>
+            <li>✔ 100+ students get full time mentorship by sir</li>
+            <li>✔ Complete focused on whole career</li>
+            <li>✔ First time “Victory and speed notes@ for Accounts and business</li>
+            <li>✔ CA Deepak sir has cleared ca final in one shot</li>
           </ul>
 
           {/* App Buttons */}
@@ -132,7 +133,7 @@ const Footer = () => {
           <p>© 2026 Amandeep Commerce Classes. All Rights Reserved.</p>
           <p className="mt-2 md:mt-0">
             Designed & Developed by{" "}
-            <span className="text-red-600 font-medium">Edutech</span>
+            <span className="text-red-600 font-medium">Edutech Solutions</span>
           </p>
         </div>
       </div>

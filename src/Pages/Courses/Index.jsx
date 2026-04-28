@@ -1,270 +1,327 @@
 import React, { useState, useMemo, useEffect } from "react";
+import { myAxios } from "../../config/AxiosClient.js";
 import { useNavigate } from "react-router-dom";
-import coursesData from "../../Data/Course.json";
-import axios from "axios";
+import {
+  ChevronsLeft,
+  ChevronsRight,
+  BookOpen,
+  User,
+  ArrowRight,
+  Search,
+} from "lucide-react";
 
-const categories = ["All", "11th", "12th", "CA", "B.Com", "ACCA"];
 const caSubCategories = ["All", "Foundation", "Intermediate", "Final"];
-
+const categories = ["All", "11th", "12th", "CA", "B.Com", "ACCA"];
 const ITEMS_PER_PAGE = 6;
 
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [activeSubCategory, setActiveSubCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [isProcessing, setIsProcessing] = useState(null); // Track which course is processing
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [loading, setLoading] = useState(true);
+  const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
-  // Reset page when filter changes
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const { data } = await myAxios.get("/courses");
+        setCourses(data);
+      } catch (err) {
+        console.error("Failed to fetch courses:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCourses();
+  }, []);
+
   useEffect(() => {
     setCurrentPage(1);
   }, [activeCategory, activeSubCategory]);
 
-  // Filter courses
   const filteredCourses = useMemo(() => {
-    if (activeCategory === "All") return coursesData;
+    return courses.filter((c) => {
+      const categoryMatch =
+        activeCategory === "All" || c.category === activeCategory;
+      const subCategoryMatch =
+        activeCategory !== "CA" ||
+        activeSubCategory === "All" ||
+        c.subCategory === activeSubCategory;
+      return categoryMatch && subCategoryMatch;
+    });
+  }, [activeCategory, activeSubCategory, courses]);
 
-    if (activeCategory === "CA") {
-      if (activeSubCategory === "All") {
-        return coursesData.filter((c) => c.category === "CA");
-      }
-      return coursesData.filter(
-        (c) => c.category === "CA" && c.subCategory === activeSubCategory,
-      );
-    }
-
-    return coursesData.filter((c) => c.category === activeCategory);
-  }, [activeCategory, activeSubCategory]);
-
-  // Pagination logic
   const totalPages = Math.ceil(filteredCourses.length / ITEMS_PER_PAGE);
-
   const paginatedCourses = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredCourses.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredCourses, currentPage]);
 
-  const handleEnroll = async (course) => {
+  const handlePayment = async (course) => {
+    setIsProcessing(course._id);
     try {
-      if (!course || !course.price) {
-        alert("Invalid course data");
-        return;
-      }
-
-      const email = prompt("Enter your email:");
-      if (!email) return alert("Email is required");
-
-      // Step 1: Create order from backend
-      const { data } = await axios.post("http://localhost:5000/create-order", {
+      const res = await myAxios.post("/payments/create-order", {
         amount: course.price,
       });
 
-      // Step 2: Razorpay options
       const options = {
-        key: "rzp_test_SXjpC05e6GYKkB",
-        amount: data.amount,
+        key: "rzp_test_SgUshnRM5XoZ9A",
+        amount: res.data.amount,
         currency: "INR",
-        name: course.title,
-        description: "Course Purchase",
-        order_id: data.id,
-
+        name: "Amandeep Commerce Classes",
+        description: `Enrollment for ${course.title}`,
+        order_id: res.data.id,
         handler: async function (response) {
           try {
-            // Step 3: Verify payment
-            await axios.post("http://localhost:5000/verify-payment", {
-              ...response,
-              email,
-              courseId: course.id,
+            const result = await myAxios.post("/payments/verify", {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              email: "student@gmail.com", // Replace with actual logged-in user email
+              courseId: course._id,
+              courseName: course.title, // Added this
+              amount: course.price, // Added this
             });
-
-            alert("✅ Payment Successful!");
-            navigate("/success"); // optional page
+            alert("Payment Successful! Welcome to the course.");
           } catch (err) {
-            console.error(err);
-            alert("Payment verification failed");
+            alert(
+              "Verification failed but payment was taken. Please contact support.",
+            );
           }
         },
-
-        prefill: {
-          email: email,
-        },
-
-        theme: {
-          color: "#4f46e5",
-        },
+        theme: { color: "#4F46E5" },
       };
 
-      // Step 4: Open Razorpay
       const rzp = new window.Razorpay(options);
       rzp.open();
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong while initiating payment");
+    } catch (err) {
+      console.error("Payment Error:", err);
+    } finally {
+      setIsProcessing(null);
     }
   };
 
-  return (
-    <div className="min-h-screen">
-      {/* CATEGORY FILTER */}
-      <div className="max-w-6xl mx-auto px-4 mt-10 flex flex-wrap justify-center gap-3">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setActiveCategory(cat);
-              setActiveSubCategory("All");
-            }}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-              activeCategory === cat
-                ? "bg-linear-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105"
-                : "bg-gray-100 text-gray-700 hover:bg-indigo-100"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+  // Skeleton Loader Component
+  const SkeletonCard = () => (
+    <div className="bg-white rounded-2xl p-6 border animate-pulse">
+      <div className="h-4 w-20 bg-gray-200 rounded mb-4"></div>
+      <div className="h-6 w-3/4 bg-gray-200 rounded mb-2"></div>
+      <div className="h-4 w-1/2 bg-gray-200 rounded mb-6"></div>
+      <div className="space-y-2 mb-6">
+        <div className="h-3 w-full bg-gray-100 rounded"></div>
+        <div className="h-3 w-5/6 bg-gray-100 rounded"></div>
       </div>
+      <div className="flex gap-2">
+        <div className="h-10 flex-1 bg-gray-200 rounded-lg"></div>
+        <div className="h-10 flex-1 bg-gray-200 rounded-lg"></div>
+      </div>
+    </div>
+  );
 
-      {/* CA SUBCATEGORY */}
-      {activeCategory === "CA" && (
-        <div className="max-w-4xl mx-auto px-4 mt-6 flex justify-center gap-3 flex-wrap">
-          {caSubCategories.map((sub) => (
-            <button
-              key={sub}
-              onClick={() => setActiveSubCategory(sub)}
-              className={`px-4 py-1 rounded-full text-xs font-medium transition ${
-                activeSubCategory === sub
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {sub}
-            </button>
-          ))}
-        </div>
-      )}
+  return (
+    <div className="min-h-screen bg-[#F8FAFC] pb-20 font-sans text-slate-900">
+      {/* Header Section */}
+      <header className="bg-white border-b pt-12 pb-8 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+            Master Commerce with{" "}
+            <span className="text-indigo-600">Amandeep Classes</span>
+          </h1>
+          <p className="text-slate-500 max-w-2xl mx-auto mb-8">
+            Expert-led courses designed to help you ace your exams and build a
+            solid professional foundation.
+          </p>
 
-      {/* COURSES */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedCourses.length === 0 && (
-            <p className="text-center text-gray-500 col-span-full">
-              No courses found.
-            </p>
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setActiveSubCategory("All");
+                }}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all transform active:scale-95 ${
+                  activeCategory === cat
+                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200"
+                    : "bg-white border text-slate-600 hover:border-indigo-400 hover:text-indigo-600"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* CA Sub-category */}
+          {activeCategory === "CA" && (
+            <div className="flex justify-center gap-2 mt-6 animate-in fade-in slide-in-from-top-2">
+              {caSubCategories.map((sub) => (
+                <button
+                  key={sub}
+                  onClick={() => setActiveSubCategory(sub)}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                    activeSubCategory === sub
+                      ? "bg-slate-800 text-white"
+                      : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                  }`}
+                >
+                  {sub}
+                </button>
+              ))}
+            </div>
           )}
+        </div>
+      </header>
 
-          {paginatedCourses.map((course) => (
-            <div
-              key={course.id}
-              className="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border"
-            >
-              <div className="p-6 flex flex-col justify-between h-full">
-                <div>
-                  <span className="inline-block bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full mb-3">
-                    {course.badge}
-                  </span>
+      <main className="max-w-7xl mx-auto px-4 py-12">
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <SkeletonCard key={i} />
+            ))}
+          </div>
+        ) : filteredCourses.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {paginatedCourses.map((course) => (
+                <div
+                  key={course._id}
+                  className="group bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col transition-all hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-4">
+                      <span
+                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
+                          course.isPopular
+                            ? "bg-amber-100 text-amber-700"
+                            : "bg-blue-100 text-blue-700"
+                        }`}
+                      >
+                        {course.isPopular ? "Best Seller" : "New Release"}
+                      </span>
+                      <BookOpen
+                        size={18}
+                        className="text-slate-300 group-hover:text-indigo-500 transition-colors"
+                      />
+                    </div>
 
-                  <h3 className="text-lg font-bold mb-1">{course.title}</h3>
+                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                      {course.title}
+                    </h3>
 
-                  <p className="text-gray-500 text-sm mb-1">{course.tutor}</p>
+                    <div className="flex items-center gap-2 text-slate-500 text-sm mb-4">
+                      <User size={14} />
+                      <span>{course.tutor}</span>
+                    </div>
 
-                  <p className="text-sm text-yellow-600 mb-2">
-                    ⭐ {course.rating} | {course.students}+ students
-                  </p>
+                    <p className="text-slate-600 text-sm line-clamp-2 mb-6 leading-relaxed">
+                      {course.description}
+                    </p>
 
-                  <p className="text-gray-500 text-sm mb-2">
-                    {course.category}
-                    {course.subCategory ? ` - ${course.subCategory}` : ""}
-                  </p>
-
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {course.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="mb-4">
-                    <span className="text-xl font-bold text-indigo-700">
-                      ₹{course.price?.toLocaleString()}
-                    </span>
-                    <span className="text-sm line-through text-gray-400 ml-2">
-                      ₹{course.oldPrice?.toLocaleString()}
-                    </span>
+                    <div className="flex items-baseline gap-2 mb-8">
+                      <span className="text-3xl font-black text-slate-900">
+                        ₹{course.price}
+                      </span>
+                      <span className="text-sm line-through text-slate-400">
+                        ₹{course.oldPrice}
+                      </span>
+                      <span className="text-xs font-bold text-green-600 ml-auto">
+                        {Math.round(
+                          ((course.oldPrice - course.price) / course.oldPrice) *
+                            100,
+                        )}
+                        % OFF
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-3 mt-auto">
                     <button
-                      onClick={() => handleEnroll(course)}
-                      className="flex-1 bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-800"
+                      onClick={() => handlePayment(course)}
+                      disabled={isProcessing === course._id}
+                      className="flex-2 bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-all flex justify-center items-center gap-2 disabled:opacity-70"
                     >
-                      Enroll
+                      {isProcessing === course._id ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        "Enroll Now"
+                      )}
                     </button>
-
                     <button
-                      onClick={() => navigate(`/course/${course.id}`)}
-                      className="flex-1 border border-indigo-700 text-indigo-700 py-2 rounded-lg hover:bg-indigo-50"
+                      onClick={() => navigate(`/course/${course._id}`)}
+                      className="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all flex justify-center items-center"
                     >
                       Details
                     </button>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* PAGINATION */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center mt-16 gap-3">
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="p-2 rounded-lg bg-white border text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50 transition-all"
+                >
+                  <ChevronsLeft size={20} />
+                </button>
+
+                <div className="flex gap-2">
+                  {[...Array(totalPages)].map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`w-10 h-10 rounded-lg font-bold transition-all ${
+                        currentPage === i + 1
+                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
+                          : "bg-white border text-slate-500 hover:border-indigo-300"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="p-2 rounded-lg bg-white border text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 disabled:opacity-50 transition-all"
+                >
+                  <ChevronsRight size={20} />
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300">
+            <Search className="mx-auto text-slate-300 mb-4" size={48} />
+            <h3 className="text-xl font-bold text-slate-800">
+              No courses found
+            </h3>
+            <p className="text-slate-500">
+              Try adjusting your filters to find what you're looking for.
+            </p>
             <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+              onClick={() => {
+                setActiveCategory("All");
+                setActiveSubCategory("All");
+              }}
+              className="mt-6 text-indigo-600 font-bold hover:underline"
             >
-              Prev
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-              <button
-                key={num}
-                onClick={() => setCurrentPage(num)}
-                className={`px-4 py-2 rounded-lg ${
-                  currentPage === num
-                    ? "bg-indigo-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
-              >
-                {num}
-              </button>
-            ))}
-
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
-            >
-              Next
+              Clear all filters
             </button>
           </div>
         )}
-
-        <p className="text-center text-gray-500 mt-10 text-sm">
-          🔥 5000+ Students | ⭐ 4.8 Rating | 📈 Proven Results
-        </p>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-black text-white py-20 text-center px-4">
-        <h2 className="text-3xl font-bold mb-4">
-          Start Your Commerce Journey Today 🚀
-        </h2>
-        <p className="max-w-xl mx-auto text-gray-400 mb-6">
-          Join thousands of successful students with smart strategy & notes.
-        </p>
-        <button className="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:scale-105 transition">
-          Start Learning Today
-        </button>
-      </section>
+      </main>
     </div>
   );
 };
